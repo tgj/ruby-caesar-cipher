@@ -1,9 +1,14 @@
 def caesar_cipher(msg, shift = 0)
-  msg.downcase.split("").map do |l|
+  def _shift(letter, by, limit)
+    (letter.ord + by > limit.ord ? letter.ord + by - ("a".."z").to_a.length : letter.ord + by).chr
+  end
+  msg.split("").map do |l|
     if "a" <= l && l <= "z"
-      (l.ord + shift > "z".ord ? l.ord + shift - ("a".."z").to_a.length : l.ord + shift).chr
+      _shift(l, shift, "z")
+    elsif "A" <= l && l <= "Z"
+      _shift(l, shift, "Z")
     else
       l
     end
-  end.join.capitalize
+  end.join
 end
