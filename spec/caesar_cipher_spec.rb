@@ -15,4 +15,12 @@ RSpec.describe "Caesar Cipher Exercises" do
       expect(cipher).to eq(result)
     end
   end
+
+  describe "backwards cipher" do
+    it "returns cipher specifying negative shift factor" do
+      cipher = caesar_cipher("azy", -1)
+      result = "zyx"
+      expect(cipher).to eq(result)
+    end
+  end
 end
